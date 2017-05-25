@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ERS</title>
+</head>
+<body>
+	<h1>Hello.</h1>
+	<button id="refreshGameList">Refresh List</button>
+	<ul id="gameList"></ul>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+	  var socket = io();
+
+
+	  socket.on('gameList', function(gameList) {
+	  	var listEl = document.getElementById('gameList');
+
+	  	console.log(gameList);
+	  });
+
+	  document.getElementById("refreshGameList").onclick = function() {
+	  	socket.emit('gameList');
+	  };
+	</script>
+</body>
+</html>
